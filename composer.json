@@ -1,14 +1,14 @@
 {
     "name": "touge/admin-sundry",
-    "description": "description...",
+    "description": "基于laravel-admin的在线学习插件。提供在线时长监控和签到功能",
     "type": "library",
     "keywords": ["laravel-admin", "extension"],
     "homepage": "https://github.com/touge/admin-sundry",
     "license": "MIT",
     "authors": [
         {
-            "name": "your name",
-            "email": "your email"
+            "name": "Nick Yuan",
+            "email": "lon.y@qq.com"
         }
     ],
     "require": {
