@@ -3,7 +3,8 @@
 namespace Touge\AdminSundry\Http\Controllers\Admin;
 
 use Encore\Admin\Form;
-use Encore\Admin\Grid;
+use Touge\AdminOverwrite\Grid\Displayers\Actions;
+use Touge\AdminOverwrite\Grid\Grid;
 use Encore\Admin\Show;
 use Touge\AdminSundry\Http\Controllers\BaseAdminController;
 use Touge\AdminSundry\Models\LearnDuration;
@@ -15,7 +16,7 @@ class LearnDurationController extends BaseAdminController
      *
      * @var string
      */
-    protected $title = 'Touge\AdminSundry\Models\LearnDuration';
+    protected $title = '学习时长';
 
     /**
      * Make a grid builder.
@@ -27,11 +28,21 @@ class LearnDurationController extends BaseAdminController
         $grid = new Grid(new LearnDuration());
 
         $grid->column('id', __('Id'));
-        $grid->column('user_id', __('User id'));
+        $grid->column('user.name', __('User id'));
         $grid->column('online_time', __('Online time'));
-        $grid->column('day', __('Day'));
-        $grid->column('created_at', __('Created at'));
-        $grid->column('updated_at', __('Updated at'));
+        $grid->column('day', __('Day'))->display(function($value){
+            return date('Y-m-d', $value);
+        });
+
+        $grid->disableExport()
+            ->disableColumnSelector()
+            ->disableCreateButton()
+            ->disableFilter()
+            ->disableRowSelector();
+
+        $grid->actions(function(Actions $actions){
+            $actions->disableDelete()->disableEdit();
+        });
 
         return $grid;
     }

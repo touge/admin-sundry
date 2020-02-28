@@ -11,6 +11,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class LearnDuration extends Model
 {
+    use UserRelate;
+
     protected $table= 'touge_sundry_learn_duration';
     protected $guarded= ['id'];
+
 }

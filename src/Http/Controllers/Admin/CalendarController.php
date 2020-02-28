@@ -3,10 +3,13 @@
 namespace Touge\AdminSundry\Http\Controllers\Admin;
 
 use Encore\Admin\Form;
-use Encore\Admin\Grid;
+//use Encore\Admin\Grid;
 use Encore\Admin\Show;
+use Touge\AdminOverwrite\Grid\Displayers\Actions;
 use Touge\AdminSundry\Http\Controllers\BaseAdminController;
 use Touge\AdminSundry\Models\Calendar;
+
+use Touge\AdminOverwrite\Grid\Grid;
 
 class CalendarController extends BaseAdminController
 {
@@ -15,7 +18,7 @@ class CalendarController extends BaseAdminController
      *
      * @var string
      */
-    protected $title = 'Touge\AdminSundry\Models\Calendar';
+    protected $title = '签到记录';
 
     /**
      * Make a grid builder.
@@ -27,12 +30,22 @@ class CalendarController extends BaseAdminController
         $grid = new Grid(new Calendar());
 
         $grid->column('id', __('Id'));
-        $grid->column('user_id', __('User id'));
-        $grid->column('type', __('Type'));
+        $grid->column('user.name', __('User'));
+//        $grid->column('type', __('Type'));
         $grid->column('title', __('Title'));
-        $grid->column('content', __('Content'));
+//        $grid->column('content', __('Content'));
         $grid->column('created_at', __('Created at'));
-        $grid->column('updated_at', __('Updated at'));
+//        $grid->column('updated_at', __('Updated at'));
+
+        $grid->disableExport()
+            ->disableColumnSelector()
+            ->disableFilter()
+            ->disableCreateButton()
+            ->disableRowSelector();
+
+        $grid->actions(function(Actions $actions){
+            $actions->disableDelete()->disableEdit();
+        });
 
         return $grid;
     }

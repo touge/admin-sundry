@@ -11,6 +11,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Calendar extends Model
 {
+    use UserRelate;
+
     protected $table= 'touge_sundry_calendars';
 
     protected $guarded= ['id'];

@@ -9,4 +9,5 @@ Route::group([
     'as'=> 'sundry.'
 ],function(Router $router){
     $router->resource('learn-durations', "LearnDurationController");
+    $router->resource('calendar', "CalendarController");
 });

@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\Route;
 
 class AdminSundryServiceProvider extends ServiceProvider
 {
+    protected $config_file= 'admin-sundry.php';
+
     /**
      * {@inheritdoc}
      */
@@ -16,15 +18,16 @@ class AdminSundryServiceProvider extends ServiceProvider
             return ;
         }
 
+        if( !file_exists(config_path($this->config_file))){
+            $this->loadConfig();
+        }
+
         if ($views = $extension->views()) {
             $this->loadViewsFrom($views, 'admin-sundry');
         }
 
         if ($this->app->runningInConsole() && $assets = $extension->assets()) {
-            $this->publishes(
-                [$assets => public_path('vendor/touge/admin-sundry')],
-                'touge-laravel-admin-sundry'
-            );
+            $this->publishes([__DIR__.'/../config' => config_path()], 'touge-admin-sundry-config');
         }
 
         $this->app->booted(function () {
@@ -53,5 +56,12 @@ class AdminSundryServiceProvider extends ServiceProvider
         );
 
         Route::group($attributes, $callback);
+    }
+
+
+    protected function loadConfig(){
+        $key = substr($this->config_file, 0, -4);
+        $full_path= __DIR__ . '/../config/' . $this->config_file;
+        $this->app['config']->set($key, array_merge_recursive(config($key, []), require $full_path));
     }
 }
