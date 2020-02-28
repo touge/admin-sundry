@@ -16,7 +16,14 @@ Route::group([
     'prefix'=> 'touge-sundry',
 ], function(Router $router){
     /**
-     * 获得考试列表
+     * 用户时间统计
      */
     $router->post('learn-duration/heartbeat', 'LearnDurationController@heartbeat')->name('heartbeat');
+
+    /**
+     * 签到系统
+     */
+    $router->post("calendar/sign-list" ,"CalendarController@sign_list")->name('calendar.sign_list');
+    $router->post("calendar/sign-in" ,"CalendarController@sign_in")->name('calendar.store');
+
 });

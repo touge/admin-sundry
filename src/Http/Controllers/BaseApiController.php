@@ -11,8 +11,7 @@ namespace Touge\AdminSundry\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
-use Touge\AdminExamination\Exceptions\ResponseFailedException;
-use Touge\AdminExamination\Exceptions\ThrowError;
+use Touge\AdminSundry\Exceptions\ThrowError;
 
 class BaseApiController extends Controller
 {
@@ -45,10 +44,11 @@ class BaseApiController extends Controller
             ->setEncodingOptions(JSON_UNESCAPED_UNICODE);
     }
 
+
     /**
      * @param $message
      * @param int $httpCode
-     * @throws ResponseFailedException
+     * @throws \Touge\AdminSundry\Exceptions\ResponseFailedException
      */
     protected function failed($message,$httpCode=200){
         if(is_array($message)){

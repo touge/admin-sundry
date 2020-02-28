@@ -44,7 +44,7 @@ class AdminSundryServiceProvider extends ServiceProvider
     {
         $attributes = array_merge(
             [
-                'prefix'=> 'api/sundry',
+                'prefix'=> 'api',
                 'namespace'     => '\Touge\AdminSundry\Http\Controllers\Api',
                 'as'=> 'api.sundry.',
                 'middleware'=> ['api', 'jwt.auth:api'],
