@@ -27,6 +27,8 @@ class LearnDurationController extends BaseAdminController
     {
         $grid = new Grid(new LearnDuration());
 
+        $grid->model()->orderBy('id','desc');
+
         $grid->column('id', __('Id'));
         $grid->column('user.name', __('User id'));
         $grid->column('online_time', __('Online time'));
