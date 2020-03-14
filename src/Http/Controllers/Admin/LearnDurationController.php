@@ -27,12 +27,16 @@ class LearnDurationController extends BaseAdminController
     {
         $grid = new Grid(new LearnDuration());
 
-        $grid->model()->orderBy('id','desc');
+        $grid->model()
+            ->where(['customer_school_id'=> $this->customer_school_id()])
+            ->orderBy('id','desc');
 
         $grid->column('id', __('Id'));
-        $grid->column('user.name', __('User id'));
-        $grid->column('online_time', __('Online time'));
-        $grid->column('day', __('Day'))->display(function($value){
+        $grid->column('user.name', __('admin.name'));
+        $grid->column('online_time', __('touge::touge-sundry.online_time'))->display(function ($seconds){
+            return gmstrftime('%H时%M分%S秒', $seconds/1000);
+        });
+        $grid->column('day', __('touge::touge-sundry.day'))->display(function($value){
             return date('Y-m-d', $value);
         });
 

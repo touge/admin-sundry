@@ -42,6 +42,7 @@ class CalendarController extends BaseApiController
 
         $options= [
             'user_id'=> $this->user()->id,
+            'customer_school_id'=> $this->user()->customer_school_id,
             'type'=> $request->get('type', 0),
             'title'=> $request->get('title' ,''),
             'content'=> $request->get('content' , ''),

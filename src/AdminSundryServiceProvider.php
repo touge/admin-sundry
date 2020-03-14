@@ -29,6 +29,7 @@ class AdminSundryServiceProvider extends ServiceProvider
         if ($this->app->runningInConsole() && $assets = $extension->assets()) {
             $this->publishes([__DIR__.'/../config' => config_path()], 'touge-admin-sundry-config');
         }
+        $this->loadTranslationsFrom(__DIR__ . '/../resources/lang', 'touge');
 
         $this->app->booted(function () {
             AdminSundry::routes(__DIR__.'/../routes/web.php');

@@ -3,7 +3,6 @@
 namespace Touge\AdminSundry\Http\Controllers\Admin;
 
 use Encore\Admin\Form;
-//use Encore\Admin\Grid;
 use Encore\Admin\Show;
 use Touge\AdminOverwrite\Grid\Displayers\Actions;
 use Touge\AdminSundry\Http\Controllers\BaseAdminController;
@@ -29,12 +28,16 @@ class CalendarController extends BaseAdminController
     {
         $grid = new Grid(new Calendar());
 
+        $model = $grid->model();
+        $model->where(['customer_school_id'=> $this->customer_school_id()])->orderBy('id', 'desc');
+
         $grid->column('id', __('Id'));
-        $grid->column('user.name', __('User'));
+//        $grid->customer_school_id('example');
+        $grid->column('user.name', __('admin.name'));
 //        $grid->column('type', __('Type'));
-        $grid->column('title', __('Title'));
+        $grid->column('title', __('admin.title'));
 //        $grid->column('content', __('Content'));
-        $grid->column('created_at', __('Created at'));
+        $grid->column('created_at', __('admin.created_at'));
 //        $grid->column('updated_at', __('Updated at'));
 
         $grid->disableExport()

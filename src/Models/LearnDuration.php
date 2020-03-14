@@ -7,9 +7,8 @@
  */
 
 namespace Touge\AdminSundry\Models;
-use Illuminate\Database\Eloquent\Model;
 
-class LearnDuration extends Model
+class LearnDuration extends BaseModel
 {
     use UserRelate;
 

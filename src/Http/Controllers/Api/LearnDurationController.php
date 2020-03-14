@@ -16,6 +16,7 @@ class LearnDurationController extends BaseApiController
 
         $online= LearnDuration::where([
             'user_id'=> $this->user()->id,
+            'customer_school_id'=> $this->user()->customer_school_id,
             'day'=> $todayUnixTime
         ])->first();
 
@@ -28,6 +29,7 @@ class LearnDurationController extends BaseApiController
 
         $options= [
             'user_id'=> $this->user()->id,
+            'customer_school_id'=> $this->user()->customer_school_id,
             'online_time'=> $heartbeat,
             'day'=> $todayUnixTime
         ];

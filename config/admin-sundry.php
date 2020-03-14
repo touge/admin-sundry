@@ -7,8 +7,11 @@
  */
 return [
     //插件中使用的用户信息关联表
+    'database'=> [
+        'connection'=> 'main_system',
+    ],
     'user_relate'=> [
-        'model'=> App\Models\Customer\SchoolMember::class,
+        'model'=> \App\Admin\Modals\AdminUser::class,//App\Models\Customer\SchoolMember::class,
         'key'=> 'id'
     ],
 ];

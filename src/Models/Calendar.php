@@ -7,14 +7,12 @@
  */
 
 namespace Touge\AdminSundry\Models;
-use Illuminate\Database\Eloquent\Model;
 
-class Calendar extends Model
+class Calendar extends BaseModel
 {
     use UserRelate;
 
     protected $table= 'touge_sundry_calendars';
-
     protected $guarded= ['id'];
 
     /**
