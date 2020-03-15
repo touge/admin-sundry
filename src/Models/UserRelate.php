@@ -22,8 +22,8 @@ trait UserRelate
      */
     public function user(): HasOne
     {
-        $related_model= config('admin-sundry.user_relate.model');
-        $related_key= config('admin-sundry.user_relate.key');
+        $related_model= config('touge-admin-sundry.user_relate.model');
+        $related_key= config('touge-admin-sundry.user_relate.key');
         return $this->hasOne($related_model ,$related_key ,'user_id');
     }
 }

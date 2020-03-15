@@ -19,7 +19,7 @@ class BaseModel extends Model
 
     public function __construct(array $attributes = [])
     {
-        $connection= config('admin-sundry.database.connection');
+        $connection= config('touge-admin-sundry.database.connection');
         $this->setConnection($connection);
         parent::__construct($attributes);
     }

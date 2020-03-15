@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Route;
 
 class AdminSundryServiceProvider extends ServiceProvider
 {
-    protected $config_file= 'admin-sundry.php';
+    protected $config_file= 'touge-admin-sundry.php';
 
     /**
      * {@inheritdoc}
