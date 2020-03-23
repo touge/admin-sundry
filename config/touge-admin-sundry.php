@@ -8,10 +8,10 @@
 return [
     //插件中使用的用户信息关联表
     'database'=> [
-        'connection'=> 'main_system',
+        'connection'=> env('TOUGE_SUNDRY_DB_CONNECTION', 'main_system'),
     ],
     'user_relate'=> [
-        'model'=> \App\Admin\Modals\AdminUser::class,//App\Models\Customer\SchoolMember::class,
-        'key'=> 'id'
+        'model'=> env('TOUGE_SUNDRY_USER_RELATE_MODEL', \App\Admin\Modals\AdminUser::class),
+        'key'=> env('TOUGE_SUNDRY_USER_RELATE_KEY', 'id')
     ],
 ];
